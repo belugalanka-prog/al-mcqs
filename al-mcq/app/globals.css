@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #f6f5fb;
+  --color-surface: #ffffff;
+  --color-ink: #1b1834;
+  --color-muted: #6e6a8a;
+  --color-brand: #5a4be1;
+  --color-brand-soft: #efedfd;
+  --color-brand-deep: #221c4d;
+  --color-ok: #2ed47a;
+  --color-warn: #ff8a4c;
+  --color-bad: #f0476c;
+  --color-hairline: #eceaf4;
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 24px;
+  --radius-inner: 14px;
+}
+
+:root {
+  --canvas: #f6f5fb;
+  --surface: #ffffff;
+  --ink: #1b1834;
+  --muted: #6e6a8a;
+  --brand: #5a4be1;
+  --brand-soft: #efedfd;
+  --brand-deep: #221c4d;
+  --ok: #2ed47a;
+  --warn: #ff8a4c;
+  --bad: #f0476c;
+  --hairline: #eceaf4;
+  --shadow-card: 0 8px 28px rgba(27, 24, 52, 0.06);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #131128;
+  --surface: #1c1936;
+  --ink: #f4f3fa;
+  --muted: #a09bc4;
+  --brand-soft: #2a2450;
+  --brand-deep: #0f0d22;
+  --hairline: #2b2750;
+  --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Card: the single structural device of the whole product --- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.card-pad {
+  padding: 22px 24px;
+}
+
+/* --- Pills --- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.pill-brand {
+  background: var(--brand);
+  color: #fff;
+}
+.pill-brand:hover {
+  background: #4b3dd0;
+}
+
+.pill-deep {
+  background: var(--brand-deep);
+  color: #fff;
+}
+
+.pill-ghost {
+  background: transparent;
+  color: var(--muted);
+}
+.pill-ghost:hover {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.pill-soft {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+/* --- Left rail --- */
+.rail {
+  background: var(--brand);
+  border-radius: 28px;
+}
+
+.rail-item {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  transition: all 0.15s ease;
+}
+.rail-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+.rail-item[data-active="true"] {
+  background: #fff;
+  color: var(--brand);
+}
+
+/* --- Exam option pills --- */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 16px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  text-align: left;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.option:hover {
+  border-color: #cfc8f5;
+}
+.option[data-selected="true"] {
+  background: var(--brand-soft);
+  border-color: var(--brand);
+}
+.option[data-state="correct"] {
+  background: rgba(46, 212, 122, 0.1);
+  border-color: var(--ok);
+}
+.option[data-state="wrong"] {
+  background: rgba(240, 71, 108, 0.08);
+  border-color: var(--bad);
+}
+
+.option-key {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid var(--hairline);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  flex: none;
+}
+.option[data-selected="true"] .option-key {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+/* --- Progress bar used in attempt tables --- */
+.bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+.bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--brand);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
